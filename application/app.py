@@ -15,6 +15,7 @@ def create_app():
     api = Api(app, version="1.0", title="Multi-Namespace API",
               description="Application with multiple namespaces")
 
+    api.add_namespace(auth.healthcheck_ns, path="/")
     api.add_namespace(auth.auth_ns, path="/api/v1/auth")
     api.add_namespace(profile.profile_ns, path="/api/v1/mysetting")
     api.add_namespace(dashboard.dashboard_ns, path="/api/v1/dashboard")

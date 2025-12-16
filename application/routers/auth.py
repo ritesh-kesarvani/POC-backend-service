@@ -7,6 +7,17 @@ from flask import request, current_app as app
 from werkzeug.security import generate_password_hash, check_password_hash
 
 auth_ns = Namespace("users", description="User related operations")
+healthcheck_ns = Namespace("health check")
+
+
+# Healthcheck API to return the service status
+@healthcheck_ns.route('/healthcheck')
+class Healthcheck(Resource):
+    def get(self):
+        return {
+            "status": "success"
+        }, 200
+
 
 # CREATE - Add a new user
 @auth_ns.route('/register')
