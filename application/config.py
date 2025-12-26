@@ -1,5 +1,6 @@
 import os, logging
 from dotenv import load_dotenv
+from urllib.parse import quote_plus
 
 load_dotenv()
 
@@ -24,7 +25,7 @@ class Config:
     DB_PORT = os.getenv("DB_PORT", 3306)
 
     LOG_LEVEL = get_logging_function(os.getenv("LOG_LEVEL"))
-    DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PWD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    DATABASE_URL = f"mysql+pymysql://{DB_USER}:{quote_plus(DB_PWD)}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
     USE_SQLALCHEMY = int(os.getenv("USE_SQLALCHEMY", 0))
     SECRET_KEY = os.getenv("SECRET_KEY")
 

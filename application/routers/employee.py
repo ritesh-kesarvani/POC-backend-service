@@ -205,7 +205,7 @@ class Importemployee(Resource):
                         name_arr = row["IRM"].lower().split(" ")
                         irm_email = ""
                         if name_arr:
-                            irm_email = f"{name_arr[0]}.{name_arr[1] if len(name_arr) > 1 else ""}@yash.com"
+                            irm_email = f"{name_arr[0]}.{name_arr[1] if len(name_arr) > 1 else ''}@yash.com"
                         new_irm = Reportinmanagers(
                             name=row["IRM"],
                             email=irm_email
